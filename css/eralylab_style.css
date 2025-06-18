@@ -19,7 +19,7 @@ img
     max-width: 100%; /* Ensures the image does not exceed the width of its container */
     height: auto;    /* Maintains the aspect ratio of the image */
     display: block;  /* Prevents extra space at the bottom of the image */
-    margin: 0 auto; /* Automatically centers the element horizontally */
+    margin: 0 auto;  /* Automatically centers the element horizontally */
 }
 
 a 

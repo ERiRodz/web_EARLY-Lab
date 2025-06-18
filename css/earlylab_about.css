@@ -1,0 +1,17 @@
+.Table_COL1
+{
+    transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 690px)
+{
+    .Table_COL1
+    {
+        display: none;
+    }
+
+    .Table_COL2
+    {
+        width: auto;
+    }
+}

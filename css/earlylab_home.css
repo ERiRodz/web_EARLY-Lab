@@ -1,0 +1,21 @@
+.Main_COL2
+{
+    transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 800px)
+{
+    .Main_COL2
+    {
+        margin: auto;
+        width: 20%;        
+    }
+}
+
+@media (max-width: 650px)
+{
+    .Main_COL2
+    {
+        display: none;     
+    }
+}

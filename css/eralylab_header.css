@@ -7,7 +7,7 @@ header
 
 .Header_COL
 {
-    width: 45%; /* 50% of the header width */
+    width: 45%; /* 45% of the header width */
     display: inline-block; /* Makes the divs inline-block */
 }
 
@@ -26,7 +26,8 @@ header
 
 #Header_LOGO
 {
-    width: 8%;
+    width: 9%;
+    min-width: 45px;
 }
 
 
@@ -35,6 +36,14 @@ header
     font-family: helvetica-w01-roman, helvetica-w02-roman, helvetica-lt-w10-roman, sans-serif;
     font-size: 16px;
     margin: 0 0 0 25px;
+}
+
+@media (max-width: 1260px) 
+{
+    #Header_TITLE
+    {
+        white-space: nowrap;
+    }
 }
 
 /* Header_COL2 section */

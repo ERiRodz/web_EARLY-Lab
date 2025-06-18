@@ -100,7 +100,7 @@ let dropNav = () => {
         
         navShow = true;// Nav is visible.
     } 
-    //If nav is shown.
+    // If nav is shown.
     else 
     {
         for(let i = 0; i < getNavTab.length; i++)
