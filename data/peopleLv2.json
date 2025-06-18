@@ -1,0 +1,32 @@
+[
+  {
+    "pic" : "../_img/EARLY_Lab_badge.png",
+    "name": "NameLv2",
+    "lastname": "Lastname",
+    "role": "Role",
+    "position": "Position",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "cv": "",
+    "page": ""
+  },
+  {
+    "pic" : "../_img/EARLY_Lab_badge.png",
+    "name": "John",
+    "lastname": "Doe",
+    "role": "Researcher",
+    "position": "Lead Scientist",
+    "description": "Expert in computational biology with 10+ years' experience in genomic data analysis.",
+    "cv": "https://example.com/john-doe-cv.pdf",
+    "page": "https://earlylab.org/johndoe"
+  },
+  {
+    "pic" : "../_img/EARLY_Lab_badge.png",
+    "name": "Jane",
+    "lastname": "Smith",
+    "role": "Engineer",
+    "position": "Software Developer",
+    "description": "Specializes in backend development and scalable cloud infrastructure.",
+    "cv": "https://example.com/jane-smith-cv.pdf",
+    "page": "https://earlylab.org/janesmith"
+  }
+]

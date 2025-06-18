@@ -44,6 +44,16 @@ header
     padding: 10px 10px 0 10px;
 }
 
+#Header_NAVHAM
+{
+    display: none;
+    height: 0px;
+    margin: 15px;
+    width: 50px;
+    float: inline-end;
+    cursor: pointer;
+}
+
  #Header_NAVIGATION ul
  {
     margin: 0;            /* Remove default margin */
@@ -58,6 +68,7 @@ header
     font-size: 0.8vw;
     font-weight: bold; /* Makes text bold */    
     color: #d1d1d1;
+    background: #500000;
     display: inline-block; /* Makes the divs inline-block */
     text-align: center;
     padding: 20px 20px 0 20px;
@@ -71,5 +82,12 @@ header
 .TAB a:hover
 {
     color: white;
+}
+
+@media (min-width: 1260px) 
+{
+  .TAB a:hover 
+  {
     border-top: 3px solid #ffffff;
+  }
 }

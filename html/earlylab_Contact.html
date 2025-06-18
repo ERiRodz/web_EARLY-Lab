@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/eralylab_header.css">    
     <link rel="stylesheet" href="../css/earlylab_main.css">
 </head>
-<body>
+<body onresize="navOnResize()">
     <div class="Wrapper">
         <header>
             <div id="Header_COL1" class="Header_COL">
@@ -19,7 +19,10 @@
                 </a>
             </div>
             <div id="Header_COL2" class="Header_COL">
-                <nav id="Header_NAVIGATION"><!-- Navigation added through js. --></nav>
+                <nav id="Header_NAVIGATION">
+                    <img id="Header_NAVHAM" src="../_img/nav_ham.png" alt="ham">
+                    <!-- Navigation added through js. -->
+                </nav>
             </div>
         </header>    
         <main>
