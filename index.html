@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="css/eralylab_style.css">
     <link rel="stylesheet" href="css/eralylab_header.css">
     <link rel="stylesheet" href="css/earlylab_main.css">
+    <link rel="stylesheet" href="css/earlylab_home.css">
 </head>
-<body> <!-- Home, but not dynamically -->
+<body onresize="navOnResize()">
     <div class="Wrapper">
         <header>
             <div id="Header_COL1" class="Header_COL">
@@ -21,31 +22,7 @@
             <div id="Header_COL2" class="Header_COL">
                 <nav id="Header_NAVIGATION">
                     <img id="Header_NAVHAM" src="../_img/nav_ham.png" alt="ham">
-                    <ul>
-                        <li class="TAB">
-                            <a href="html/earlylab_Home.html">Home</a>
-                        </li>
-                        <li class="TAB">
-                            <a href="html/earlylab_About.html">About</a>
-                        </li>
-                        <li class="TAB">
-                            <a href="html/earlylab_Research.html">Research</a>
-                        </li>
-                        <li class="TAB">
-                            <a href="html/earlylab_People.html">People</a>
-                        </li>
-                        <li class="TAB">
-                            <a href="html/earlylab_Publications.html">Publications</a>
-                        </li>
-                        <!--
-                        <li class="TAB">
-                            <a href="">Resources</a>
-                        </li>
-                        -->
-                        <li class="TAB">
-                            <a href="html/earlylab_Contact.html">Contact</a>
-                        </li>
-                    </ul>
+                    <!-- Navigation added through js. -->
                 </nav>
             </div>
         </header>    
@@ -80,5 +57,123 @@
     <!-- Link to the external JavaScript file -->
     <!-- <script src="js/earlylab_script.js"></script> -->
     <!-- <script src="../js/earlylab_nav.js"></script> -->
+     <script>
+        // Dynamically insert navigation elements
+document.addEventListener('DOMContentLoaded', () => {
+    // Define the navigation items
+    const navItems = [
+        { text: 'Home', href: 'html/earlylab_Home.html' },
+        { text: 'About', href: 'html/earlylab_About.html' },
+        { text: 'Research', href: 'html/earlylab_Research.html' },
+        { text: 'People', href: 'html/earlylab_People.html' },
+        { text: 'Publications', href: 'html/earlylab_Publications.html' },
+        //{ text: 'Resources', href: '""' },
+        { text: 'Contact', href: 'html/earlylab_Contact.html' }
+    ];
+
+    // Create a <ul> for the navigation list
+    const ul = document.createElement('ul');
+
+    // Loop through the nav items and create <li> for each
+    navItems.forEach(item => {
+        const li = document.createElement('li');
+        li.classList.add('TAB');
+
+        const a = document.createElement('a');
+        a.textContent = item.text;
+        a.href = item.href;
+
+        li.appendChild(a);
+        ul.appendChild(li);
+    });
+
+    // Append the <ul> to the <nav>
+    const headerNav = document.getElementById('Header_NAVIGATION');
+    headerNav.appendChild(ul);
+});
+
+
+
+// Manage Nav based on view width
+const widthThreshold = 1260;
+let nav = document.getElementById('Header_NAVIGATION');
+let navHam = document.getElementById('Header_NAVHAM');
+let getNavTab = document.getElementsByClassName("TAB"); // Each nav tab.
+let getWindowWidth = document.getElementsByTagName("BODY")[0].offsetWidth;// Get body width.
+
+let mobileMode = (getWindowWidth > widthThreshold) ? false : true; // Initial state of mobileMode; it goes by the body width.
+let navShow = (getWindowWidth < widthThreshold) ? true : false; // Inital state of the nav; it goes by the body width.
+
+// 
+let navOnResize = () => {
+    getWindowWidth = document.getElementsByTagName("BODY")[0].offsetWidth; // Check body width upon resize.
+    
+    // Desktop mode.
+    if(getWindowWidth > widthThreshold) 
+    {
+        for(let i = 0; i < getNavTab.length; i++) 
+        {
+            getNavTab[i].style.display = "inline-block"; // Shows the nav tabs by setting display to inline-block.
+            getNavTab[i].style.visibility = "visible"; // Hides nav tabs by setting display to block.
+            getNavTab[i].style.paddingBottom = "0px";
+            getNavTab[i].style.fontSize = "0.8em";
+        }
+        
+        nav.style.removeProperty('position');
+        nav.style.removeProperty('top');
+        nav.style.removeProperty('right');
+        navHam.style.height = "0px";
+        navHam.style.display = "none";
+        navShow = true; //The nav tabs are visible.
+        mobileMode = false; // Desktop mode.
+    } 
+    // When the body width shrinks and nav tabs are visible. Hides the nav tabs dinamically.
+    else if(getWindowWidth < widthThreshold && navShow) 
+    {
+        for(let i = 0; i < getNavTab.length; i++) 
+        {
+            getNavTab[i].style.display = "block"; // Display to block.
+            getNavTab[i].style.visibility = "hidden"; // Hides nav tabs.
+            getNavTab[i].style.paddingBottom = "20px";
+            getNavTab[i].style.fontSize = "1em";
+        }
+        
+        nav.style.position = "absolute";
+        nav.style.top = "0";
+        nav.style.right = "0";
+        navHam.style.height = "auto";
+        navHam.style.display = "block";
+        navShow = false; // The menu is hidden.
+        mobileMode = true; // Mobile mode.
+    }
+}
+
+//When mobileMode, ham is shown and menu is hidden by default; click the ham to make nav visible on mobileMode.
+let dropNav = () => {
+    // If nav is hidden.
+    if(!navShow) 
+    {
+        for(let i = 0; i < getNavTab.length; i++) 
+        {
+            getNavTab[i].style.visibility = "visible"; // Hides nav tabs by setting display to block.
+        }
+        
+        navShow = true;// Nav is visible.
+    } 
+    // If nav is shown.
+    else 
+    {
+        for(let i = 0; i < getNavTab.length; i++)
+        {
+            getNavTab[i].style.visibility = "hidden"; // Hides nav tabs.
+        }
+        
+        navShow = false; // Nav is hidden.
+    }
+}
+
+document.getElementById("Header_NAVHAM").onclick = dropNav; // Clicking the nav.[Only on mobileMode]
+document.addEventListener("DOMContentLoaded", () => { navOnResize();}); // Call on load runs after the DOM is ready, before images/stylesheets).
+     </script>
 </body>
 </html>
