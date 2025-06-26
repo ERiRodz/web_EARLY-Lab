@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Event listener: waits for the initial HTML document to be fully loaded and parsed, before running the code inside the callback function.
 document.addEventListener('DOMContentLoaded', () => { 
   // initiates an HTTP GET request to load the JSON file 
-  fetch('../data/news.json') // path JSON file
+  fetch('data/news.json') // path JSON file
   // runs once the fetch request completes and a response is received
     .then(response => {
       // Checks if the HTTP response is OK (status 200–299).
