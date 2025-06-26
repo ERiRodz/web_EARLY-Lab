@@ -63,18 +63,19 @@ header
     cursor: pointer;
 }
 
- #Header_NAVIGATION ul
+ #Header_NAVCONTAINER
  {
     margin: 0;            /* Remove default margin */
     padding: 0;           /* Remove default padding */
     list-style: none;     /* Remove default bullets */
+    display: flex;
  }
 
 
 .TAB 
 {
     width: auto;
-    font-size: 0.8vw;
+    font-size: 1.2vw;
     font-weight: bold; /* Makes text bold */    
     color: #d1d1d1;
     background: #500000;

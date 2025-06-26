@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { text: 'Contact', href: 'earlylab_Contact.html' }
     ];
 
-    // Create a <ul> for the navigation list
-    const ul = document.createElement('ul');
+    // Get <ul> container for the navigation list
+    const ul = document.getElementById('Header_NAVCONTAINER');
 
     // Loop through the nav items and create <li> for each
     navItems.forEach(item => {
@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Manage Nav based on view width
 const widthThreshold = 1260;
 let nav = document.getElementById('Header_NAVIGATION');
+let navCon = document.getElementById('Header_NAVCONTAINER');
 let navHam = document.getElementById('Header_NAVHAM');
 let getNavTab = document.getElementsByClassName("TAB"); // Each nav tab.
 let getWindowWidth = document.getElementsByTagName("BODY")[0].offsetWidth;// Get body width.
@@ -56,12 +57,13 @@ let navOnResize = () => {
             getNavTab[i].style.display = "inline-block"; // Shows the nav tabs by setting display to inline-block.
             getNavTab[i].style.visibility = "visible"; // Hides nav tabs by setting display to block.
             getNavTab[i].style.paddingBottom = "0px";
-            getNavTab[i].style.fontSize = "0.8em";
+            getNavTab[i].style.fontSize = "1.2em";
         }
         
         nav.style.removeProperty('position');
         nav.style.removeProperty('top');
         nav.style.removeProperty('right');
+        if (navCon != null) navCon.style.display = "flex";
         navHam.style.height = "0px";
         navHam.style.display = "none";
         navShow = true; //The nav tabs are visible.
@@ -81,6 +83,7 @@ let navOnResize = () => {
         nav.style.position = "absolute";
         nav.style.top = "0";
         nav.style.right = "0";
+        if (navCon != null) navCon.style.display = "block";
         navHam.style.height = "auto";
         navHam.style.display = "block";
         navShow = false; // The menu is hidden.
@@ -113,4 +116,7 @@ let dropNav = () => {
 }
 
 document.getElementById("Header_NAVHAM").onclick = dropNav; // Clicking the nav.[Only on mobileMode]
-document.addEventListener("DOMContentLoaded", () => { navOnResize();}); // Call on load runs after the DOM is ready, before images/stylesheets).
+document.addEventListener("DOMContentLoaded", () => { 
+    navOnResize(); // Call on load when DOM is ready (runs after the DOM is ready, before images/stylesheets).
+    window.addEventListener("resize", navOnResize); // Attach on window resize
+}); 
