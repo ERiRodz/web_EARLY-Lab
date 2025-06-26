@@ -1,0 +1,12 @@
+#Tenets
+{
+    font-size: clamp(18px, 1.2em, 36px);
+}
+
+@media (max-width: 690px)
+{
+    #Tenets
+    {
+        font-size: clamp(14px, .9em, 20px);
+    }
+}

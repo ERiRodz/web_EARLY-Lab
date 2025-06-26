@@ -26,24 +26,24 @@
                 </nav>
             </div>
         </header>    
-         <main>
+        <main>
             <section class="Main_HEADER Main_BLOCK">
                 <h2 class="Main_TITLE">EARLY LAB</h2>
                 <p class="Main_TEXT">Educational Assessment, Research, and Learning of Young Children</p>
             </section>
-            <section class="Main_FLEX">
+            <section id="Philosophy" class="Main_FLEX">
                 <div class="Main_COL Main_COL1">
-                    <h3 class="Section_HEADER">Philosophy Statement</h3>
-                    <p class="Section_TEXT">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <h3 class="Section_HEADER">Philosophy</h3>
+                    <p class="Section_TEXT">At the EARLY Lab, we believe that high-quality assessment is key to understanding and supporting how young children learn. Inspired by Vygotsky’s view that learners grow through shared experiences before working independently, our lab emphasizes collaboration, mentorship, and applied research that reflects the real experiences of children and educators. We value the diverse perspectives that our team members and external collaborators bring, and approach research and learning as a shared and evolving process. </p>
                 </div>
                 <div class="Main_COL Main_COL2">
                     <img src="_img/EARLY_Lab_logo.png" alt="logo">
                 </div>
             </section>
-            <section class="Main_FLEX">
+            <section id="News" class="Main_FLEX">
                 <div class="Main_COL Main_COL1">
-                    <h3 class="Section_HEADER">Philosophy Statement</h3>
-                    <p class="Section_TEXT">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <h3 class="Section_HEADER">News</h3>
+                    <ul id="News_LIST"></ul> <!-- News added through js. -->                   
                 </div>
                 <div class="Main_COL Main_COL2">
                     <img src="_img/EARLY_Lab_logo.png" alt="logo">
@@ -62,13 +62,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Define the navigation items
     const navItems = [
-        { text: 'Home', href: 'earlylab_Home.html' },
-        { text: 'About', href: 'earlylab_About.html' },
-        { text: 'Research', href: 'earlylab_Research.html' },
-        { text: 'People', href: 'earlylab_People.html' },
-        { text: 'Publications', href: 'earlylab_Publications.html' },
+        { text: 'Home', href: 'html/earlylab_Home.html' },
+        { text: 'About', href: 'html/earlylab_About.html' },
+        { text: 'Research', href: 'html/earlylab_Research.html' },
+        { text: 'People', href: 'html/earlylab_People.html' },
+        { text: 'Publications', href: 'html/earlylab_Publications.html' },
         //{ text: 'Resources', href: '""' },
-        { text: 'Contact', href: 'earlylab_Contact.html' }
+        { text: 'Contact', href: 'html/earlylab_Contact.html' }
     ];
 
     // Get <ul> container for the navigation list
@@ -117,13 +117,13 @@ let navOnResize = () => {
             getNavTab[i].style.display = "inline-block"; // Shows the nav tabs by setting display to inline-block.
             getNavTab[i].style.visibility = "visible"; // Hides nav tabs by setting display to block.
             getNavTab[i].style.paddingBottom = "0px";
-            getNavTab[i].style.fontSize = "1em";
+            getNavTab[i].style.fontSize = "1.2em";
         }
         
         nav.style.removeProperty('position');
         nav.style.removeProperty('top');
         nav.style.removeProperty('right');
-        if (navCon != null) navCon.style.display = "flex";
+        navCon.style.display = "flex";
         navHam.style.height = "0px";
         navHam.style.display = "none";
         navShow = true; //The nav tabs are visible.
@@ -137,13 +137,13 @@ let navOnResize = () => {
             getNavTab[i].style.display = "block"; // Display to block.
             getNavTab[i].style.visibility = "hidden"; // Hides nav tabs.
             getNavTab[i].style.paddingBottom = "20px";
-            getNavTab[i].style.fontSize = "1em";
+            getNavTab[i].style.fontSize = "1.2em";
         }
         
         nav.style.position = "absolute";
         nav.style.top = "0";
         nav.style.right = "0";
-        if (navCon != null) navCon.style.display = "block";
+        navCon.style.display = "block";
         navHam.style.height = "auto";
         navHam.style.display = "block";
         navShow = false; // The menu is hidden.
@@ -180,6 +180,33 @@ document.addEventListener("DOMContentLoaded", () => {
     navOnResize(); // Call on load when DOM is ready (runs after the DOM is ready, before images/stylesheets).
     window.addEventListener("resize", navOnResize); // Attach on window resize
 }); 
+    </script>
+    <script>
+        // Event listener: waits for the initial HTML document to be fully loaded and parsed, before running the code inside the callback function.
+document.addEventListener('DOMContentLoaded', () => { 
+  // initiates an HTTP GET request to load the JSON file 
+  fetch('../data/news.json') // path JSON file
+  // runs once the fetch request completes and a response is received
+    .then(response => {
+      // Checks if the HTTP response is OK (status 200–299).
+      if (!response.ok) throw new Error('Network response was not ok Lv1'); // NOT, throws an error to be caught later.
+      return response.json(); // OK, converts the response data from JSON to a JavaScript object/array.
+    })
+    // receives the parsed JSON data as a js array; convert each people object into an element of the array members 
+    .then(news => {
+      // Gets the DOM element with the ID 'News_LIST' (the placeholder for the dynamically generated li).
+      const container = document.getElementById('News_LIST');
+      if (!container) return; // If element with the ID 'News_LIST' not found, stops execution.
+      // .map: array method that creates a new array, member, and apply the function to create a string of HTML for each element of the news_item array (new array)
+      container.innerHTML = news.map(item => `        
+        <li class="News_ITEM"><a href=${item.link}><p class="Section_TEXT">${item.article}</p></a></li>
+      `).join('\n'); // The mapped array of HTML strings is joined together and set as the inner HTML of the container.      
+    })
+    // Handles any errors that occurred during the fetch or the data processing.
+    .catch(error => {
+      console.error('Failed to fetch members:', error);
+    });
+});
     </script>
 </body>
 </html>

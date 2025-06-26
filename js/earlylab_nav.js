@@ -63,7 +63,7 @@ let navOnResize = () => {
         nav.style.removeProperty('position');
         nav.style.removeProperty('top');
         nav.style.removeProperty('right');
-        if (navCon != null) navCon.style.display = "flex";
+        navCon.style.display = "flex";
         navHam.style.height = "0px";
         navHam.style.display = "none";
         navShow = true; //The nav tabs are visible.
@@ -83,7 +83,7 @@ let navOnResize = () => {
         nav.style.position = "absolute";
         nav.style.top = "0";
         nav.style.right = "0";
-        if (navCon != null) navCon.style.display = "block";
+        navCon.style.display = "block";
         navHam.style.height = "auto";
         navHam.style.display = "block";
         navShow = false; // The menu is hidden.

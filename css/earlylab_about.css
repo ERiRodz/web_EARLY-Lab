@@ -1,6 +1,32 @@
+.Table_COL
+{
+    margin: 0;
+}
+
 .Table_COL1
 {
     transition: all 0.3s ease-in-out;
+    margin: 50px 0;
+}
+
+.Table_COL2
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center children */
+}
+
+.Table_HEADER
+{
+    font-size: 1.8em;
+}
+
+@media (max-width: 1100px)
+{
+    .Table_HEADER
+    {
+        font-size: 1.3em;
+    }
 }
 
 @media (max-width: 690px)
@@ -13,5 +39,11 @@
     .Table_COL2
     {
         width: auto;
+    }
+
+    .Table_HEADER
+    {
+        font-size: clamp(8px, 0.8em, 16px);
+        padding: 0;
     }
 }

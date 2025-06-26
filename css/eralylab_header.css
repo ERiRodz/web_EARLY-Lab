@@ -76,7 +76,6 @@ header
 {
     width: auto;
     font-size: 1.2vw;
-    font-weight: bold; /* Makes text bold */    
     color: #d1d1d1;
     background: #500000;
     display: inline-block; /* Makes the divs inline-block */
