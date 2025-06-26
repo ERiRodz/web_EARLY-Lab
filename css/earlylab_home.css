@@ -7,7 +7,7 @@
 {
     content: ' ↗'; /* Symbols: '🔗', '→', '↗' */
     font-size: 1em;
-    vertical-align: super;
+    vertical-align: sub;
     color: inherit;
     opacity: 0.7;
 }
