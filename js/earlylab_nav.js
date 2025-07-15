@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { text: 'Home', href: 'earlylab_Home.html' },
         { text: 'About', href: 'earlylab_About.html' },
         { text: 'Research', href: 'earlylab_Research.html' },
-        { text: 'People', href: 'earlylab_People.html' },
-        { text: 'Publications', href: 'earlylab_Publications.html' },
+        //{ text: 'People', href: 'earlylab_People.html' },
+        //{ text: 'Publications', href: 'earlylab_Publications.html' },
         //{ text: 'Resources', href: '""' },
-        { text: 'Contact', href: 'earlylab_Contact.html' }
+        //{ text: 'Contact', href: 'earlylab_Contact.html' }
     ];
 
     // Get <ul> container for the navigation list
